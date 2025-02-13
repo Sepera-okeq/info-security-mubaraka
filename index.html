@@ -15,6 +15,28 @@
             color: #333; /* Улучшил контраст текста для светлой темы */
         }
 
+        #scrollToTopButton {
+            display: none; /* Скрываем кнопку по умолчанию */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99; /* Отображаем кнопку поверх других элементов */
+            border: none;
+            outline: none;
+            background-color: #007bff; /* Цвет кнопки */
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            opacity: 0.8; /* Полупрозрачность */
+            transition: opacity 0.3s; /* Плавное изменение прозрачности при наведении */
+        }
+
+        #scrollToTopButton:hover {
+            opacity: 1;
+        }
+
         @media (prefers-color-scheme: dark) {
             body {
                 background-color: #1e1e1e;
@@ -13298,7 +13320,29 @@ M834 80h400000v40h-400000z" />
   <p>Надо дублировать ход одного другому. MITM атака.</p>
 
   <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+  <button onclick="scrollToTop()" id="scrollToTopButton" title="Наверх">&#8593;</button>
 
+  <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+
+  <script>
+      // Функция для плавной прокрутки наверх
+      function scrollToTop() {
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth' // для плавной прокрутки
+          });
+      }
+
+      // Показываем кнопку, когда пользователь прокрутит страницу вниз
+      window.onscroll = function() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              document.getElementById("scrollToTopButton").style.display = "block";
+          } else {
+              document.getElementById("scrollToTopButton").style.display = "none";
+          }
+      };
+
+  </script>
 </body>
 
 </html>
